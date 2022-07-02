@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post("/create", (req, res) => {
   // buat variabel penampung data dan query sql
   const data = { ...req.body };
-  const querySql = "INSERT INTO menu SET ?";
+  const querySql = "INSERT INTO informasi_hp SET ?";
 
   // jalankan query
   koneksi.query(querySql, data, (err, rows, field) => {
@@ -34,7 +34,7 @@ app.post("/create", (req, res) => {
 // read data / get data
 app.get("/read", (req, res) => {
   // buat query sql
-  const querySql = "SELECT * FROM menu";
+  const querySql = "SELECT * FROM informasi_hp";
 
   // jalankan query
   koneksi.query(querySql, (err, rows, field) => {
@@ -52,8 +52,8 @@ app.get("/read", (req, res) => {
 app.put("/update/:id", (req, res) => {
   // buat variabel penampung data dan query sql
   const data = { ...req.body };
-  const querySearch = "SELECT * FROM menu WHERE id = ?";
-  const queryUpdate = "UPDATE menu SET ? WHERE id = ?";
+  const querySearch = "SELECT * FROM informasi_hp WHERE id = ?";
+  const queryUpdate = "UPDATE informasi_hp SET ? WHERE id = ?";
 
   // jalankan query untuk melakukan pencarian data
   koneksi.query(querySearch, req.params.id, (err, rows, field) => {
@@ -87,8 +87,8 @@ app.put("/update/:id", (req, res) => {
 // delete data
 app.delete("/delete/:id", (req, res) => {
   // buat query sql untuk mencari data dan hapus
-  const querySearch = "SELECT * FROM menu WHERE id = ?";
-  const queryDelete = "DELETE FROM menu WHERE id = ?";
+  const querySearch = "SELECT * FROM informasi_hp WHERE id = ?";
+  const queryDelete = "DELETE FROM informasi_hp WHERE id = ?";
 
   // jalankan query untuk melakukan pencarian data
   koneksi.query(querySearch, req.params.id, (err, rows, field) => {
